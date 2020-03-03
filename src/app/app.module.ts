@@ -3,30 +3,33 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppAngularMaterialModule } from './app.angular-material.module';
-import { LayoutComponent } from './components/layout/layout.component';
-import { HeaderComponent } from './components/layout/header/header.component';
-import { FooterComponent } from './components/layout/footer/footer.component';
+import { AngularMaterialModule } from './angular-material.module';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { MatProgressSpinnerCenteredComponent } from './components/mat-spinner-centered/mat-spinner-centered.component';
-import { ConfirmationDialogComponent } from './dialogs/confirmation/confirmation.dialog.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation.dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MoviesComponent } from './components/movies/movies.component';
+import { CollectionViewerListComponent } from './components/movies/list/movies-list.component';
+import { MoviesGridComponent } from './components/movies/grid/movies-grid.component';
+import { MoviesFiltersDialogComponent } from './components/movies/filters-dialog/movies-filters-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MatProgressSpinnerCenteredComponent,
-    LayoutComponent,
     HeaderComponent,
     FooterComponent,
-    ConfirmationDialogComponent
-  ],
-  entryComponents: [
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    MoviesComponent,
+    CollectionViewerListComponent,
+    MoviesGridComponent,
+    MoviesFiltersDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AppAngularMaterialModule,
+    AngularMaterialModule,
     BrowserAnimationsModule
   ],
   providers: [],

@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>{{ labelFilters }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="filterForm" class="filters-grid"
+    (submit)="submitFilters()">
+    <mat-form-field class="filter keywords">
+      <input matInput type="text" formControlName="keywords"
+        placeholder="{{ labelKeywords }}" />
+    </mat-form-field>
+    <mat-form-field class="filter year">
+      <mat-select formControlName="year"
+        placeholder="{{ labelBrand }}">
+        <mat-option>{{ labelOmitFilter }}</mat-option>
+        <mat-option *ngFor="let b of (years$ | async)" [value]="b.id">{{ b.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="filter genre">
+      <mat-select formControlName="genre"
+        placeholder="{{ labelType }}" >
+        <mat-option>{{ labelOmitFilter }}</mat-option>
+        <mat-option *ngFor="let t of (types$ | async)" [value]="t.id">{{ t.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-button type="submit"
+      color="accent"
+      title="{{ labelUpdateFilters }}"
+      [disabled]="filterForm.disabled || filterForm.pristine || filterForm.untouched">
+      <i class="small material-icons">search</i>
+    </button>
+  </form>
+</mat-dialog-content>

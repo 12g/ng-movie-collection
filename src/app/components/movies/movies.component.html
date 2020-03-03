@@ -1,0 +1,18 @@
+<div class="movies">
+  <div class="config">
+    <button mat-fab class=""
+      title="Filtrar"
+      (click)="onClickFilters()">
+      <i class="material-icons">filter_list</i>
+    </button>
+    <mat-button-toggle-group #viewMode="matButtonToggleGroup">
+      <mat-button-toggle value="grid">
+        <i class="material-icons">grid_on</i>
+      </mat-button-toggle>
+      <mat-button-toggle value="list">
+        <i class="material-icons">list</i>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="view"></div>
+</div>
