@@ -1,17 +1,20 @@
-complete
+COMPLETE:
+* Nothing lol
 
-incomplete/with errors:
-*service for providing movie filters options
-*movie filters component logic
-*filters dialog
+WITH ERRORS:
+* Movie filters component
 
-*view switching logic
+INCOMPLETE:
+* Service for providing movie filters options
+* Filters dialog component
 
-not started:
-*movie grid layout/logic
-*view switch component
-*item details dialog
+* View switching logic
+
+PENDING:
+* Movie grid layout/logic
+* View switch component
+* Item details dialog component
 
 possible bugs:
-*missing texts
-*path errors
+* Missing texts
+* Path errors
