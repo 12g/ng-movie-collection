@@ -5,11 +5,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.less']
 })
-export class MoviesComponent implements OnInit {
+export class MoviesComponent
+  implements OnInit {
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  public onClickFilters(): void { }
 
 }

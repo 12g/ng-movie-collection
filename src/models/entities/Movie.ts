@@ -6,6 +6,7 @@ import { Image } from '../Image';
 export class Movie
   extends AbstractEntity {
 
+  id: number;
   public title: string;
   public releaseYear: number;
   public cast: Partial<Person>[];

@@ -8,16 +8,16 @@
     </mat-form-field>
     <mat-form-field class="filter year">
       <mat-select formControlName="year"
-        placeholder="{{ labelBrand }}">
+        placeholder="{{ labelYear }}">
         <mat-option>{{ labelOmitFilter }}</mat-option>
         <mat-option *ngFor="let b of (years$ | async)" [value]="b.id">{{ b.name }}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field class="filter genre">
       <mat-select formControlName="genre"
-        placeholder="{{ labelType }}" >
+        placeholder="{{ labelGenre }}" >
         <mat-option>{{ labelOmitFilter }}</mat-option>
-        <mat-option *ngFor="let t of (types$ | async)" [value]="t.id">{{ t.name }}</mat-option>
+        <mat-option *ngFor="let t of (genres$ | async)" [value]="t.id">{{ t.name }}</mat-option>
       </mat-select>
     </mat-form-field>
     <button mat-button type="submit"

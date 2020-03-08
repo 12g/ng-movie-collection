@@ -3,6 +3,8 @@ export const LBL_AUTHOR = 'Autor';
 export const LBL_NAME = 'Nombre';
 export const LBL_BRAND = 'Marca';
 export const LBL_TYPE = 'Tipo';
+export const LBL_YEAR = 'Año';
+export const LBL_GENRE = 'Género';
 export const LBL_DESCRIPTION = 'Descripción';
 export const LBL_SPECS = 'Especificaciones';
 export const LBL_MESSAGE_BODY = 'Cuerpo de texto';
@@ -31,6 +33,5 @@ export const LBL_NO_DESCRIPTION = '(Sin descripción)';
 export const LBL_TOGGLE_SIDEMENU = 'Alternar menú lateral';
 export const LBL_EDIT_PROFILE = 'Editar perfil';
 
-export const LBL_DEVICE_FILTERS = 'Filtrar Dispositivos';
-export const LBL_QUESTION_FILTERS = 'Filtrar Preguntas';
+export const LBL_MOVIES_FILTERS = 'Filtrar Películas';
 

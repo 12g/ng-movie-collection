@@ -42,7 +42,6 @@ export const DATE_PROVIDER_IMPLEMENTATION = MatNativeDateModule;
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
     MATERIAL_MODULES,
     DATE_PROVIDER_IMPLEMENTATION
   ],
