@@ -5,6 +5,8 @@ import { catchError, tap, retry } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { MovieDataInMemoryService } from 'src/data/in-memory/movie.data.in-memory.service';
 import { UserProfileDataInMemoryService } from 'src/data/in-memory/user-profile.data.in-memory.service';
+import { MovieFilters } from './filters-dialog/MovieFilters';
+import { MoviesFiltersDialogComponent } from './filters-dialog/movies-filters-dialog.component';
 
 @Injectable({ providedIn: 'root' })
 export class MoviesService
@@ -14,7 +16,8 @@ export class MoviesService
   protected moviesSource: Subject<Movie[]>;
 
   public movies$: Observable<Movie[]>;
-  public filter: string;
+  public filters: Partial<MovieFilters>;
+  public viewMode: string;
 
   public get movies(): Movie[] {
     return this.moviesArray;
@@ -32,7 +35,8 @@ export class MoviesService
     this.moviesArray = [];
     this.moviesSource = new BehaviorSubject(this.moviesArray);
     this.movies$ = this.moviesSource.asObservable();
-    this.filter = '';
+    this.filters = {};
+    this.viewMode = '';
   }
 
   ngOnDestroy(): void {
@@ -40,8 +44,8 @@ export class MoviesService
   }
 
   public reloadMovies(): void {
-    const noFilters = (JSON.stringify(this.filter) === '');
-    const query: Observable<Movie[]> = noFilters ? this.data.readAll() : this.data.readFiltered({ keywords: this.filter });
+    const noFilters = (JSON.stringify(this.filters) === '{}');
+    const query: Observable<Movie[]> = noFilters ? this.data.readAll() : this.data.readFiltered({ keywords: this.filters });
 
     query.pipe(
       catchError(() => []),
@@ -72,6 +76,12 @@ export class MoviesService
 
     // return dialog.afterClosed();
     return of(new Movie());
+  }
+
+  public openFiltersDialog(): Observable<MovieFilters> {
+    return this.dialogs
+      .open(MoviesFiltersDialogComponent)
+      .afterClosed();
   }
 
   public insertMovie(m: Movie): Observable<Movie> {

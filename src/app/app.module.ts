@@ -9,6 +9,8 @@ import { MoviesComponent } from './movies/movies.component';
 import { MoviesListComponent } from './movies/list/movies-list.component';
 import { MoviesGridComponent } from './movies/grid/movies-grid.component';
 import { MoviesFiltersDialogComponent } from './movies/filters-dialog/movies-filters-dialog.component';
+import { InternalDataModule } from 'src/data/internal-data.module';
+import { ConfigComponent } from './config/config.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,13 @@ import { MoviesFiltersDialogComponent } from './movies/filters-dialog/movies-fil
     MoviesComponent,
     MoviesListComponent,
     MoviesGridComponent,
-    MoviesFiltersDialogComponent
+    MoviesFiltersDialogComponent,
+    ConfigComponent
   ],
   imports: [
     BrowserModule,
-    SharedModule
+    SharedModule,
+    InternalDataModule
   ],
   providers: [],
   bootstrap: [AppComponent]

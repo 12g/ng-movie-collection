@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { Movie } from 'src/models/entities/Movie';
+import { LBL_ADD_DEVICE } from 'src/text/es/labels';
+import { MoviesService } from './movies.service';
+import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 
 @Component({
   selector: 'app-movies',
@@ -8,11 +13,29 @@ import { Component, OnInit } from '@angular/core';
 export class MoviesComponent
   implements OnInit {
 
-  constructor() { }
+  protected load: Subscription;
 
-  ngOnInit(): void {
+  public movies$: Observable<Movie[]>;
+
+  public get isMovieGridViewEnabled(): boolean {
+    return this.svc.viewMode === 'grid';
+  }
+  public get isMovieListViewEnabled(): boolean {
+    return this.svc.viewMode === 'list';
+  }
+  public get loading(): boolean {
+    return (this.load) ? this.load.closed : false;
   }
 
-  public onClickFilters(): void { }
+  constructor(
+    protected svc: MoviesService
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.movies$ = this.svc.movies$;
+    this.load = this.movies$.subscribe();
+    this.svc.reloadMovies();
+  }
 
 }

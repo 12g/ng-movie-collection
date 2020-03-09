@@ -1,10 +1,14 @@
 .movies {
+  min-height: 100%;
   display: flex;
   flex-flow: column nowrap;
 }
 
-.config {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-items: end;
+.movies>.config {
+  flex: 0 0 auto;
+}
+
+.movies>.view {
+  flex: 1 0 100%;
+  overflow: auto;
 }
