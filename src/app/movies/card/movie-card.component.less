@@ -1,0 +1,46 @@
+mat-card {
+  min-height: 10em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-items: stretch;
+  cursor: pointer;
+}
+
+mat-card:hover {
+  background: #bbb;
+}
+
+mat-card-header {
+  flex: 0 0 auto;
+}
+
+mat-card-content {
+  flex: 1 0 100%;
+  padding: 0.5em;
+}
+
+.thumbnail {
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.thumbnail>img {
+  max-height: 100%;
+}
+
+.thumbnail>span {
+  font-size: 1.2em;
+}
+
+.summary {
+  max-height: 5em;
+  margin-top: 1em;
+  text-overflow: ellipsis;
+}
+
+mat-card-content>a {
+  display: inline-block;
+}

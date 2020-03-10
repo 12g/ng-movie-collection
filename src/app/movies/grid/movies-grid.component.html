@@ -1,1 +1,5 @@
-<p>???</p>
+<div class="catalog">
+  <app-movie-card *ngFor="let movie of items; let i = index"
+    [movie]="movie">
+  </app-movie-card>
+</div>

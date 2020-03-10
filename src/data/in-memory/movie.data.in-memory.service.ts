@@ -5,19 +5,29 @@ import { Movie } from 'src/models/entities/Movie';
 export const MOCK_MOVIES: Partial<Movie>[] = [
   {
     id: 1,
-    title: 'Akira'
+    title: 'Akira',
+    releaseYear: 1988,
+    images: []
   }, {
     id: 2,
-    title: 'No te Metas con Zohan'
+    title: 'No te Metas con Zohan',
+    releaseYear: 2008,
+    images: []
   }, {
     id: 3,
-    title: 'Megamente'
+    title: 'Megamente',
+    releaseYear: 2010,
+    images: []
   }, {
     id: 4,
-    title: 'Los Vengadores'
+    title: 'Los Vengadores',
+    releaseYear: 2012,
+    images: []
   }, {
     id: 5,
-    title: 'Monsters Inc.'
+    title: 'Monsters Inc.',
+    releaseYear: 2001,
+    images: []
   }
 ];
 

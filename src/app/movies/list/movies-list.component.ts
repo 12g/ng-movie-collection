@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
-import { LBL_TITLE, LBL_DATE_CREATED, LBL_ANSWERS_COUNT, LBL_YEAR } from 'src/text/es/labels';
+import { LBL_TITLE, LBL_YEAR } from 'src/text/es/labels';
 import { DataGridTemplateComponent } from 'src/app/templates/data-grid.template.component';
 import { Movie } from 'src/models/entities/Movie';
 import { MoviesService } from 'src/app/movies/movies.service';
@@ -19,14 +19,12 @@ export class MoviesListComponent
 
     public get labelTitle(): string { return LBL_TITLE; }
     public get labelYear(): string { return LBL_YEAR; }
-    public get labelDateCreated(): string { return LBL_DATE_CREATED; }
-    public get labelAnswersCount(): string { return LBL_ANSWERS_COUNT; }
 
     constructor(
       protected svc: MoviesService
     ) {
       super();
-      this.tableColumns = [ 'title', 'author', 'dateCreated', 'answersCount' ];
+      this.tableColumns = [ 'title', 'year' ];
     }
 
     ngOnInit() {

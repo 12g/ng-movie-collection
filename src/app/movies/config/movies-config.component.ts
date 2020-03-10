@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { LBL_ADD_DEVICE } from 'src/text/es/labels';
-import { MoviesService } from '../movies/movies.service';
+import { MoviesService } from '../movies.service';
 
 @Component({
-  selector: 'app-config',
-  templateUrl: './config.component.html',
-  styleUrls: ['./config.component.less']
+  selector: 'app-movies-config',
+  templateUrl: './movies-config.component.html',
+  styleUrls: ['./movies-config.component.less']
 })
-export class ConfigComponent
+export class MoviesConfigComponent
   implements OnInit {
 
   protected readonly VIEW_MODES: string[] = [ 'grid', 'list' ];

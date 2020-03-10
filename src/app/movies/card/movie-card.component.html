@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ movie.title }} ({{ movie.releaseYear }})</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="thumbnail">
+      <img *ngIf="movie.images[0]; else noImage"
+        src="{{ movie.images[0].url }}"
+        alt="{{ movie.title }}" />
+      <ng-template #noImage>
+        <span>{{ labelNoPhotos }}</span>
+      </ng-template>
+    </div>
+  </mat-card-content>
+</mat-card>
