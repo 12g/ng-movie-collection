@@ -1,19 +1,19 @@
 COMPLETE:
-* Nothing lol
+* Movie grid layout
+* Movie list layout
+* View switching
 
 WITH ERRORS:
-* Movie filters component
 
 INCOMPLETE:
 * Service for providing movie filters options
 * Filters dialog component
-
-* View switching logic
+* Fake movies data
 
 PENDING:
-* Movie grid layout/logic
-* View switch component
 * Item details dialog component
+* New item dialog component
+* Search
 
 possible bugs:
 * Missing texts
