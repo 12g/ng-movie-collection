@@ -13,6 +13,7 @@
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
-  <tr mat-row *matRowDef="let movie; columns: tableColumns;">
+  <tr mat-row *matRowDef="let movie; columns: tableColumns;"
+    (click)="onClickView(movie)">
   </tr>
 </table>

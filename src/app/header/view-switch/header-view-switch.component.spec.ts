@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MovieCardComponent } from './movie-card.component';
+import { HeaderViewSwitchComponent } from './header-view-switch.component';
 
-describe('MovieCardComponent', () => {
-  let component: MovieCardComponent;
-  let fixture: ComponentFixture<MovieCardComponent>;
+describe('HeaderViewSwitchComponent', () => {
+  let component: HeaderViewSwitchComponent;
+  let fixture: ComponentFixture<HeaderViewSwitchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MovieCardComponent ]
+      declarations: [ HeaderViewSwitchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MovieCardComponent);
+    fixture = TestBed.createComponent(HeaderViewSwitchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

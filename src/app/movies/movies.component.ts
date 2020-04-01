@@ -1,11 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Movie } from 'src/models/entities/Movie';
-import { LBL_ADD_DEVICE } from 'src/text/es/labels';
 import { MoviesService } from './movies.service';
-import { MatButtonToggleGroup } from '@angular/material/button-toggle';
+import { map } from 'rxjs/operators';
+import { AppService } from '../app.service';
 
 @Component({
+  providers: [ MoviesService ],
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.less']
@@ -16,24 +17,23 @@ export class MoviesComponent
   protected load: Subscription;
 
   public movies$: Observable<Movie[]>;
+  public isMovieGridViewEnabled$: Observable<boolean>;
+  public isMovieListViewEnabled$: Observable<boolean>;
 
-  public get isMovieGridViewEnabled(): boolean {
-    return this.svc.viewMode === 'grid';
-  }
-  public get isMovieListViewEnabled(): boolean {
-    return this.svc.viewMode === 'list';
-  }
   public get loading(): boolean {
     return (this.load) ? this.load.closed : false;
   }
 
   constructor(
-    protected svc: MoviesService
+    protected svc: MoviesService,
+    app: AppService
   ) {
+    this.isMovieGridViewEnabled$ = app.viewMode$.pipe(map(v => v === 'grid'));
+    this.isMovieListViewEnabled$ = app.viewMode$.pipe(map(v => v === 'list'));
   }
 
   ngOnInit(): void {
-    this.movies$ = this.svc.movies$;
+    this.movies$ = this.svc.movies$.pipe();
     this.load = this.movies$.subscribe();
     this.svc.reloadMovies();
   }

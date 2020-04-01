@@ -1,0 +1,14 @@
+<div class="view-switch">
+  <button type="button" mat-button mat-icon-button
+    [disabled]="isMovieGridViewEnabled$ | async"
+    (click)="onClickGrid()"
+    title="{{ labelGridView }}">
+    <i class="small material-icons">grid_on</i>
+  </button>
+  <button type="button" mat-button mat-icon-button
+    [disabled]="isMovieListViewEnabled$ | async"
+    (click)="onClickList()"
+    title="{{ labelListView }}">
+    <i class="material-icons">list</i>
+  </button>
+</div>

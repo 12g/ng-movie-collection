@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
-import { LBL_TITLE, LBL_YEAR } from 'src/text/es/labels';
-import { DataGridTemplateComponent } from 'src/app/templates/data-grid.template.component';
-import { Movie } from 'src/models/entities/Movie';
+import { of } from 'rxjs';
 import { MoviesService } from 'src/app/movies/movies.service';
+import { Movie } from 'src/models/entities/Movie';
+import { LBL_TITLE, LBL_YEAR } from 'src/text/es/labels';
 
 @Component({
   selector: 'app-movies-list',
@@ -11,27 +11,35 @@ import { MoviesService } from 'src/app/movies/movies.service';
   styleUrls: ['./movies-list.component.less']
 })
 export class MoviesListComponent
-  extends DataGridTemplateComponent<Movie>
   implements OnInit {
 
-    @ViewChild('table', { static: true }) public table: MatTable<Movie>;
-    public tableColumns: string[];
+  @ViewChild('table', { static: true }) public table: MatTable<Movie>;
+  public tableColumns: string[];
 
-    public get labelTitle(): string { return LBL_TITLE; }
-    public get labelYear(): string { return LBL_YEAR; }
+  public get labelTitle(): string { return LBL_TITLE; }
+  public get labelYear(): string { return LBL_YEAR; }
 
-    constructor(
-      protected svc: MoviesService
-    ) {
-      super();
-      this.tableColumns = [ 'title', 'year' ];
+  @Input() public set items(input: Movie[]) {
+    if (this.table) {
+      if (input) {
+        this.table.dataSource = of(input);
+      } else {
+        this.table.dataSource = of([]);
+      }
     }
+  }
 
-    ngOnInit() {
-    }
+  constructor(
+    protected svc: MoviesService
+  ) {
+    this.tableColumns = [ 'title', 'year' ];
+  }
 
-    public onClickView(movie: Movie): void {
-      this.svc.openMovieDialogFor(movie);
-    }
+  ngOnInit() {
+  }
+
+  public onClickView(movie: Movie): void {
+    this.svc.openMovieDialogFor(movie);
+  }
 
 }

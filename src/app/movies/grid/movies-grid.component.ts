@@ -1,9 +1,8 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { DataGridTemplateComponent } from 'src/app/templates/data-grid.template.component';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subscription } from 'rxjs';
 import { Movie } from 'src/models/entities/Movie';
 import { MoviesService } from '../movies.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-movies-grid',
@@ -42,6 +41,17 @@ export class MoviesGridComponent
     if (this.load) {
       this.load.unsubscribe();
     }
+  }
+
+  public onClickView(movie: Movie): void {
+    this.svc.openMovieDialogFor(movie).subscribe(
+      (edited) => {
+        if (edited) {
+          this.svc.updateMovie(edited);
+          this.svc.reloadMovies();
+        }
+      }
+    );
   }
 
 }

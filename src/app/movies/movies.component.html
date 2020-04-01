@@ -1,11 +1,10 @@
 <div class="movies">
-  <app-movies-config></app-movies-config>
   <mat-spinner-centered *ngIf="loading"></mat-spinner-centered>
   <div class="view" [hidden]="loading">
-    <app-movies-grid *ngIf="isMovieGridViewEnabled"
+    <app-movies-grid *ngIf="isMovieGridViewEnabled$ | async"
       [items]="movies$ | async">
     </app-movies-grid>
-    <app-movies-list *ngIf="isMovieListViewEnabled"
+    <app-movies-list *ngIf="isMovieListViewEnabled$ | async"
       [items]="movies$ | async">
     </app-movies-list>
   </div>

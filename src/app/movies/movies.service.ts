@@ -1,23 +1,28 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { Movie } from 'src/models/entities/Movie';
-import { Subject, Observable, BehaviorSubject, of } from 'rxjs';
-import { catchError, tap, retry } from 'rxjs/operators';
+import { Inject, Injectable, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MovieDataInMemoryService } from 'src/data/in-memory/movie.data.in-memory.service';
-import { UserProfileDataInMemoryService } from 'src/data/in-memory/user-profile.data.in-memory.service';
-import { MovieFilters } from './filters-dialog/MovieFilters';
-import { MoviesFiltersDialogComponent } from './filters-dialog/movies-filters-dialog.component';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { DataService } from 'src/data/data.service.interface';
+import { MovieDataService } from 'src/data/movie.data.service.interface';
+import { SERVICE_ALIASES } from 'src/data/service-aliases';
+import { Descriptable } from 'src/models/Descriptable';
+import { Movie } from 'src/models/entities/Movie';
+import { UserProfile } from 'src/models/entities/UserProfile';
+import { MovieDialogData } from './dialog/MovieDialogData';
+import { MoviesDialogComponent } from './dialog/movies-dialog.component';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class MoviesService
   implements OnDestroy {
+
+  public filter: string;
 
   protected moviesArray: Movie[];
   protected moviesSource: Subject<Movie[]>;
 
   public movies$: Observable<Movie[]>;
-  public filters: Partial<MovieFilters>;
-  public viewMode: string;
+  public genres$: Observable<Descriptable[]>;
+  public statuses$: Observable<Descriptable[]>;
 
   public get movies(): Movie[] {
     return this.moviesArray;
@@ -28,15 +33,19 @@ export class MoviesService
   }
 
   constructor(
-    protected data: MovieDataInMemoryService,
-    protected usersData: UserProfileDataInMemoryService,
+    @Inject(SERVICE_ALIASES.movies) protected data: MovieDataService,
+    @Inject(SERVICE_ALIASES.users) protected usersData: DataService<UserProfile>,
     protected dialogs: MatDialog
   ) {
+    this.filter = '';
+
     this.moviesArray = [];
+
     this.moviesSource = new BehaviorSubject(this.moviesArray);
     this.movies$ = this.moviesSource.asObservable();
-    this.filters = {};
-    this.viewMode = '';
+
+    this.genres$ = this.data.readGenres();
+    this.statuses$ = this.data.readStatuses();
   }
 
   ngOnDestroy(): void {
@@ -44,8 +53,8 @@ export class MoviesService
   }
 
   public reloadMovies(): void {
-    const noFilters = (JSON.stringify(this.filters) === '{}');
-    const query: Observable<Movie[]> = noFilters ? this.data.readAll() : this.data.readFiltered({ keywords: this.filters });
+    const noFilters = (this.filter === '');
+    const query: Observable<Movie[]> = noFilters ? this.data.readAll() : this.data.readFiltered({ keywords: this.filter });
 
     query.pipe(
       catchError(() => []),
@@ -59,29 +68,21 @@ export class MoviesService
     );
   }
 
-  public openMovieDialogFor(dvc: Movie): Observable<Movie> {
-    // const dialogData: MovieDialogData = {
-    //   svc: this,
-    //   question: dvc ? dvc : null
-    // };
-    // const dialog = this.dialogs.open(
-    //   MovieDialogComponent,
-    //   {
-    //     width: '60em',
-    //     height: '35em',
-    //     panelClass: [ 'no-padding' ],
-    //     data: dialogData
-    //   }
-    // );
+  public openMovieDialogFor(m: Movie): Observable<Movie> {
+    const dialogData: MovieDialogData = {
+      svc: this,
+      movie: m ? m : null
+    };
+    const dialog = this.dialogs.open(
+      MoviesDialogComponent,
+      {
+        width: '60em',
+        panelClass: [],
+        data: dialogData
+      }
+    );
 
-    // return dialog.afterClosed();
-    return of(new Movie());
-  }
-
-  public openFiltersDialog(): Observable<MovieFilters> {
-    return this.dialogs
-      .open(MoviesFiltersDialogComponent)
-      .afterClosed();
+    return dialog.afterClosed();
   }
 
   public insertMovie(m: Movie): Observable<Movie> {

@@ -3,11 +3,11 @@ import { Movie } from 'src/models/entities/Movie';
 import { LBL_NO_PHOTOS, LBL_NO_DESCRIPTION } from 'src/text/es/labels';
 
 @Component({
-  selector: 'app-movie-card',
-  templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.less']
+  selector: 'app-movies-grid-card',
+  templateUrl: './movies-grid-card.component.html',
+  styleUrls: ['./movies-grid-card.component.less']
 })
-export class MovieCardComponent
+export class MoviesGridCardComponent
   implements OnInit {
 
   @Input() public movie: Movie;

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
+import { InternalDataModule } from 'src/data/internal-data.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -8,10 +9,10 @@ import { FooterComponent } from './footer/footer.component';
 import { MoviesComponent } from './movies/movies.component';
 import { MoviesListComponent } from './movies/list/movies-list.component';
 import { MoviesGridComponent } from './movies/grid/movies-grid.component';
-import { MoviesFiltersDialogComponent } from './movies/filters-dialog/movies-filters-dialog.component';
-import { InternalDataModule } from 'src/data/internal-data.module';
-import { MoviesConfigComponent } from './movies/config/movies-config.component';
-import { MovieCardComponent } from './movies/card/movie-card.component';
+import { MoviesDialogComponent } from './movies/dialog/movies-dialog.component';
+import { MoviesGridCardComponent } from './movies/grid/card/movies-grid-card.component';
+import { HeaderViewSwitchComponent } from './header/view-switch/header-view-switch.component';
+import { HeaderTitleComponent } from './header/title/header-title.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +22,10 @@ import { MovieCardComponent } from './movies/card/movie-card.component';
     MoviesComponent,
     MoviesListComponent,
     MoviesGridComponent,
-    MoviesFiltersDialogComponent,
-    MoviesConfigComponent,
-    MovieCardComponent
+    MoviesDialogComponent,
+    MoviesGridCardComponent,
+    HeaderViewSwitchComponent,
+    HeaderTitleComponent
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MoviesFiltersDialogComponent } from './filters-dialog.component';
+import { MoviesGridCardComponent } from './movies-grid-card.component';
 
-describe('FiltersDialogComponent', () => {
-  let component: MoviesFiltersDialogComponent;
-  let fixture: ComponentFixture<MoviesFiltersDialogComponent>;
+describe('MoviesGridCardComponent', () => {
+  let component: MoviesGridCardComponent;
+  let fixture: ComponentFixture<MoviesGridCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MoviesFiltersDialogComponent ]
+      declarations: [ MoviesGridCardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MoviesFiltersDialogComponent);
+    fixture = TestBed.createComponent(MoviesGridCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

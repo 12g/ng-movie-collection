@@ -1,11 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
-import { LBL_TOGGLE_SIDEMENU, LBL_EDIT_PROFILE, LBL_DISCONNECT } from 'src/text/es/labels';
-import { MSG_INF_UNSUPPORTED_OPERATION } from 'src/text/es/messages';
-import { ConfirmationDialogData } from '../shared/confirmation-dialog/ConfirmationDialogData';
-import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation.dialog.component';
+import { Component } from '@angular/core';
+import { LBL_SETTINGS } from 'src/text/es/labels';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +10,17 @@ export class HeaderComponent {
 
   public filter: string;
 
+  public get labelSettings(): string { return LBL_SETTINGS; }
+
   constructor() {
     this.filter = '';
+  }
+
+  public onClickAddMovie(): void {
+    alert('addMovie');
+  }
+
+  public onClickSettings(): void {
+    alert('settings');
   }
 }

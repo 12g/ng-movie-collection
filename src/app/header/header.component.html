@@ -1,12 +1,19 @@
 <div class="header">
-  <div class="header-app-name">
-    <i class="material-icons">movie</i>
-    La Videoteca
-  </div>
-  <div class="header-content">
-    <mat-form-field>
+  <app-header-title></app-header-title>
+  <div class="filter">
+    <mat-form-field class="input" color="accent">
       <input matInput type="text"
-        [(ngModel)]="filter" />
+        [(ngModel)]="filter"
+        placeholder="Buscar"/>
     </mat-form-field>
+  </div>
+  <app-header-view-switch></app-header-view-switch>
+  <div class="actions">
+    <button type="button" mat-button mat-icon-button
+      class="settings"
+      (click)="onClickSettings()"
+      title="{{ labelSettings }}">
+      <i class="material-icons">settings</i>
+    </button>
   </div>
 </div>

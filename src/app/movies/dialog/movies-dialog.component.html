@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>{{ labelMovie }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="formGroup" class="form-grid"
+    (submit)="submit()">
+    <mat-form-field class="input title">
+      <input matInput type="text" formControlName="title"
+        placeholder="{{ labelTitle }}" />
+    </mat-form-field>
+    <mat-form-field class="input year">
+      <mat-select formControlName="year"
+        placeholder="{{ labelYear }}">
+        <mat-option *ngFor="let y of (years$ | async)" [value]="y">{{ y }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="input genres">
+      <mat-select formControlName="genres"
+        placeholder="{{ labelGenres }}" multiple>
+        <mat-option *ngFor="let g of (genres$ | async)" [value]="g.id">{{ g.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="input status">
+      <mat-select formControlName="status"
+        placeholder="{{ labelStatus }}" >
+        <mat-option *ngFor="let s of (statuses$ | async)" [value]="s.id">{{ s.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-button mat-icon-button type="button"
+    color="primary"
+    title="{{ labelSubmit }}"
+    [disabled]="formGroup.disabled || formGroup.pristine || formGroup.untouched"
+    (click)="submit()">
+    <i class="small material-icons">save</i>
+  </button>
+  <span class="exit-hint">{{ labelExit }}</span>
+</mat-dialog-actions>
