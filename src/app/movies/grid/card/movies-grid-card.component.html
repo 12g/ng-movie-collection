@@ -12,4 +12,14 @@
       </ng-template>
     </div>
   </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-icon-button
+      (click)="onClickView(movie)">
+      <i class="small material-icons">edit</i>
+    </button>
+    <button mat-icon-button
+      (click)="onClickDelete(movie)">
+      <i class="small material-icons">delete</i>
+    </button>
+  </mat-card-actions>
 </mat-card>

@@ -18,6 +18,7 @@ export const LBL_DATE_TO = 'Hasta';
 export const LBL_KEY = 'Llave';
 export const LBL_VALUE = 'Valor';
 export const LBL_MORE = 'Más';
+export const LBL_FILE = 'Archivo';
 
 export const LBL_ADD_MOVIE = 'Registrar Pelicula';
 export const LBL_DISCONNECT = 'Desconectar';
@@ -37,5 +38,8 @@ export const LBL_VIEW_AS_GRID = 'Ver con miniaturas';
 export const LBL_VIEW_AS_LIST = 'Ver como listado';
 
 export const LBL_MOVIES_FILTERS = 'Filtrar Películas';
+export const LBL_IMPORT_MOVIES = 'Importar Películas';
 export const LBL_EXIT_BY_OUTSIDE_CLICK = 'Haz clic fuera de este diálogo para cerrarlo.';
 
+export const LBL_CONFIRMATION_TITLE = 'Confirmar acción';
+export const LBL_QUESTION_DELETE_MOVIE = '¿Seguro que desea quitar esta película de la colección?';

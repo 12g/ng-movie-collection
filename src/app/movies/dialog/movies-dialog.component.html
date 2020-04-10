@@ -1,7 +1,6 @@
 <h2 mat-dialog-title>{{ labelMovie }}</h2>
 <mat-dialog-content>
-  <form [formGroup]="formGroup" class="form-grid"
-    (submit)="submit()">
+  <form [formGroup]="formGroup" class="form-grid">
     <mat-form-field class="input title">
       <input matInput type="text" formControlName="title"
         placeholder="{{ labelTitle }}" />
@@ -27,10 +26,10 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="center">
-  <button mat-button mat-icon-button type="button"
+  <button mat-raised-button type="button"
     color="primary"
     title="{{ labelSubmit }}"
-    [disabled]="formGroup.disabled || formGroup.pristine || formGroup.untouched"
+    [disabled]="formGroup.disabled || formGroup.pristine"
     (click)="submit()">
     <i class="small material-icons">save</i>
   </button>

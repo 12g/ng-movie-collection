@@ -13,6 +13,8 @@ import { MoviesDialogComponent } from './movies/dialog/movies-dialog.component';
 import { MoviesGridCardComponent } from './movies/grid/card/movies-grid-card.component';
 import { HeaderViewSwitchComponent } from './header/view-switch/header-view-switch.component';
 import { HeaderTitleComponent } from './header/title/header-title.component';
+import { HeaderActionsComponent } from './header/actions/header-actions.component';
+import { MoviesImportDialogComponent } from './movies/import-dialog/movies-import-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { HeaderTitleComponent } from './header/title/header-title.component';
     MoviesDialogComponent,
     MoviesGridCardComponent,
     HeaderViewSwitchComponent,
-    HeaderTitleComponent
+    HeaderTitleComponent,
+    HeaderActionsComponent,
+    MoviesImportDialogComponent
   ],
   imports: [
     BrowserModule,

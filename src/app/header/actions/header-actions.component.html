@@ -1,0 +1,19 @@
+<mat-menu #appMenu="matMenu">
+  <button mat-menu-item (click)="onClickImportJSONCollection()">Importar colección JSON</button>
+  <button mat-menu-item *ngIf="!collectionUrl; else downloadLink"
+    (click)="onClickGenerateExportJSONCollectionLink()">Exportar colección JSON</button>
+  <ng-template #downloadLink><a mat-menu-item [href]="collectionUrl" download="movie-collection.json">Descargar colección JSON</a></ng-template>
+</mat-menu>
+<div class="actions">
+  <button type="button" mat-icon-button
+    (click)="onClickAdd()"
+    title="{{ labelAdd }}">
+    <i class="material-icons">add_circle</i>
+  </button>
+  <button type="button" mat-icon-button
+    class="settings"
+    title="{{ labelSettings }}"
+    [matMenuTriggerFor]="appMenu">
+    <i class="material-icons">settings</i>
+  </button>
+</div>

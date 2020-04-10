@@ -1,20 +1,12 @@
 COMPLETE:
 * Movie grid layout
 * Movie list layout
-* View switching
+* Layout switching
+* View, edit, add and remove movies
 
-WITH ERRORS:
-
-INCOMPLETE:
-* Service for providing movie filters options
-* Filters dialog component
-* Fake movies data
+WORKING:
+* Import & export collection through JSON files
 
 PENDING:
-* Item details dialog component
-* New item dialog component
-* Search
-
-possible bugs:
-* Missing texts
-* Path errors
+* Search / filter movies
+* Material theming

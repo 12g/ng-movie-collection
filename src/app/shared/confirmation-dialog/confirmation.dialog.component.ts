@@ -7,7 +7,8 @@ import { ConfirmationDialogData } from './ConfirmationDialogData';
   templateUrl: './confirmation.dialog.component.html',
   styleUrls: ['./confirmation.dialog.component.less']
 })
-export class ConfirmationDialogComponent implements OnInit {
+export class ConfirmationDialogComponent
+  implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: ConfirmationDialogData

@@ -4,13 +4,22 @@ table {
 
 .mat-header-row>th {
   font-weight: bold;
-  font-size: 1.1em;
-}
-
-.mat-column-title {
-  min-width: 20em;
+  font-size: 1.1rem;
 }
 
 .mat-column-year {
-  max-width: 5em;
+  width: 64px;
+}
+
+.mat-column-actions {
+  width: 96px;
+  padding: 0 !important;
+}
+
+.actions {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: auto;
+  grid-gap: 0.25em;
+  align-items: center;
 }

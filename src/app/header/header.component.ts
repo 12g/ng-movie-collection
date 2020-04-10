@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { LBL_SETTINGS } from 'src/text/es/labels';
+import { LBL_SETTINGS, LBL_ADD_MOVIE } from 'src/text/es/labels';
+import { Movie } from 'src/models/entities/Movie';
+import { MoviesService } from '../movies/movies.service';
 
 @Component({
   selector: 'app-header',
@@ -10,17 +12,10 @@ export class HeaderComponent {
 
   public filter: string;
 
-  public get labelSettings(): string { return LBL_SETTINGS; }
-
-  constructor() {
+  constructor(
+    protected movieSvc: MoviesService
+  ) {
     this.filter = '';
   }
 
-  public onClickAddMovie(): void {
-    alert('addMovie');
-  }
-
-  public onClickSettings(): void {
-    alert('settings');
-  }
 }

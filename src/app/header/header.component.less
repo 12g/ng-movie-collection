@@ -3,45 +3,26 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: stretch;
-  background: #4FC3F7;
   border-bottom: 1px #e0e0e06b solid;
-}
-
-.header>* {
-  display: inline-flex;
-  flex-flow: row nowrap;
-  align-items: center;
 }
 
 .header>app-header-title {
   flex: 0 0 auto;
-  padding: 0 1em;
 }
 .header>.filter {
   flex: 1 1 auto;
-  padding: 0 3em;
+  padding: 1em 0;
+  display: flex;
+  flex-flow: row nowrap;
 }
 .header>app-header-view-switch {
-  flex: 0 0 auto;
-  padding: 0 1em;
+  flex: 0 1 auto;
 }
-.header>.actions {
-  flex: 0 0 auto;
-  padding: 0 1em;
+.header>app-header-actions {
+  flex: 0 1 auto;
 }
 
 
 .filter>mat-form-field{
   width: 100%;
-}
-
-.actions {
-  display: flex;
-  justify-items: center;
-  align-content: center;
-}
-
-.actions>.settings {
-  width: 3.5em;
-  height: 3.5em;
 }

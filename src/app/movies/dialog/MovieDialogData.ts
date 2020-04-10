@@ -1,7 +1,9 @@
+import { Observable } from 'rxjs';
+import { Descriptable } from 'src/models/Descriptable';
 import { Movie } from 'src/models/entities/Movie';
-import { MoviesService } from '../movies.service';
 
 export interface MovieDialogData {
-  svc: MoviesService;
   movie: Movie;
+  genreList: Observable<Descriptable[]>;
+  statusesList: Observable<Descriptable[]>;
 }

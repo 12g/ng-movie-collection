@@ -1,11 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { Component, Inject } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable, of } from 'rxjs';
 import { Descriptable } from 'src/models/Descriptable';
 import { Movie } from 'src/models/entities/Movie';
-import {
-  LBL_EXIT_BY_OUTSIDE_CLICK, LBL_GENRES, LBL_MOVIE, LBL_TITLE, LBL_REQUIRED, LBL_STATUS, LBL_SUBMIT, LBL_YEAR } from 'src/text/es/labels';
+import { LBL_EXIT_BY_OUTSIDE_CLICK, LBL_GENRES, LBL_MOVIE, LBL_REQUIRED, LBL_STATUS, LBL_SUBMIT, LBL_TITLE, LBL_YEAR } from 'src/text/es/labels';
 import { MovieDialogData } from './MovieDialogData';
 
 @Component({
@@ -76,8 +75,8 @@ export class MoviesDialogComponent {
       status: [null]
     });
     this.years$ = of(this.createConsecutiveNumbersArray(1950, 2020));
-    this.genres$ = data.svc.genres$;
-    this.statuses$ = data.svc.statuses$;
+    this.genres$ = data.genreList;
+    this.statuses$ = data.statusesList;
 
     if (data && data.movie) {
       this.movie = data.movie;

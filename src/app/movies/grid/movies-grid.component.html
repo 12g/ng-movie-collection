@@ -1,6 +1,5 @@
 <div class="grid">
-  <app-movies-grid-card *ngFor="let movie of items; let i = index"
-    [movie]="movie"
-    (click)="onClickView(movie)">
+  <app-movies-grid-card *ngFor="let movie of (items$ | async); let i = index"
+    [movie]="movie">
   </app-movies-grid-card>
 </div>
