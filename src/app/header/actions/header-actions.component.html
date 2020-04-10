@@ -1,8 +1,6 @@
 <mat-menu #appMenu="matMenu">
   <button mat-menu-item (click)="onClickImportJSONCollection()">Importar colección JSON</button>
-  <button mat-menu-item *ngIf="!collectionUrl; else downloadLink"
-    (click)="onClickGenerateExportJSONCollectionLink()">Exportar colección JSON</button>
-  <ng-template #downloadLink><a mat-menu-item [href]="collectionUrl" download="movie-collection.json">Descargar colección JSON</a></ng-template>
+  <button mat-menu-item (click)="onClickExportJSONCollection()">Exportar colección JSON</button>
 </mat-menu>
 <div class="actions">
   <button type="button" mat-icon-button

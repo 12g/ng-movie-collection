@@ -90,8 +90,8 @@ export class MovieDataInMemoryService
       matchingItems = matchingItems.filter(
         mov => (
           mov.title.toUpperCase().includes(filter.toUpperCase()) ||
-          mov.cast.some(p => p.name.toUpperCase().includes(filter.toUpperCase)) ||
-          mov.status.name === filter
+          (mov.cast && mov.cast.some(p => p.name.toUpperCase().includes(filter.toUpperCase))) ||
+          (mov.status?.name && mov.status.name === filter)
         )
       );
     } else {

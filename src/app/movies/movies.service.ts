@@ -66,7 +66,7 @@ export class MoviesService
   public reloadMovies(): void {
     this.loadingMoviesSource.next(true);
     const noFilters = (this.filter === '');
-    const query: Observable<Movie[]> = noFilters ? this.data.readAll() : this.data.readFiltered({ keywords: this.filter });
+    const query: Observable<Movie[]> = noFilters ? this.data.readAll() : this.data.readFiltered(this.filter);
 
     query.pipe(
       catchError(() => []),
@@ -110,6 +110,7 @@ export class MoviesService
       {
         width: '40em',
         panelClass: [],
+        disableClose: true,
         data: dialogData
       }
     ).beforeClosed();

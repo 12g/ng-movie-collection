@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { LBL_SETTINGS, LBL_ADD_MOVIE } from 'src/text/es/labels';
-import { MoviesService } from 'src/app/movies/movies.service';
-import { take } from 'rxjs/operators';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { MatMenu } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
+import { MatMenu } from '@angular/material/menu';
+import { BlobFileDownloadDialogComponent } from 'src/app/shared/blob-file-download-dialog/blob-file-download-dialog.component';
 import { MoviesImportDialogComponent } from 'src/app/movies/import-dialog/movies-import-dialog.component';
+import { MoviesService } from 'src/app/movies/movies.service';
+import { LBL_ADD_MOVIE, LBL_SETTINGS } from 'src/text/es/labels';
+import { BlobFileDownloadDialogData } from 'src/app/shared/blob-file-download-dialog/BlobFileDownloadDialogData';
 
 @Component({
   selector: 'app-header-actions',
@@ -15,11 +15,6 @@ import { MoviesImportDialogComponent } from 'src/app/movies/import-dialog/movies
 export class HeaderActionsComponent
   implements OnInit {
 
-  private readonly DOWNLOAD_LINK_VALID_TIME = 30000;
-
-  public collectionBlob: Blob;
-  public collectionUrl: SafeResourceUrl;
-
   @ViewChild('appMenu', { static: true }) public appMenu: MatMenu;
 
   public get labelSettings(): string { return LBL_SETTINGS; }
@@ -27,11 +22,8 @@ export class HeaderActionsComponent
 
   constructor(
     protected movieSvc: MoviesService,
-    protected dialogSvc: MatDialog,
-    protected sanitizer: DomSanitizer
+    protected dialogSvc: MatDialog
   ) {
-    this.collectionBlob = null;
-    this.collectionUrl = null;
   }
 
   ngOnInit(): void {
@@ -50,14 +42,20 @@ export class HeaderActionsComponent
     );
   }
 
-  public onClickGenerateExportJSONCollectionLink(): void {
-    const moviesJSON = JSON.stringify(this.movieSvc.movies);
-    this.collectionBlob = new Blob([moviesJSON], { type: 'application/json' });
-    this.collectionUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(this.collectionBlob));
-    window.setTimeout(() => {
-      this.collectionBlob = null;
-      this.collectionUrl = null;
-    }, this.DOWNLOAD_LINK_VALID_TIME);
+  public onClickExportJSONCollection(): void {
+    const json = JSON.stringify(this.movieSvc.movies);
+    const dialogData: BlobFileDownloadDialogData = {
+      title: 'Descargar Colección JSON',
+      blob: new Blob([json], { type: 'application/json' })
+    };
+
+    this.dialogSvc.open(
+      BlobFileDownloadDialogComponent,
+      {
+        width: '20rem',
+        data: dialogData
+      }
+    );
   }
 
 }

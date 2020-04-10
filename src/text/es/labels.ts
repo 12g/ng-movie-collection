@@ -26,6 +26,7 @@ export const LBL_UPDATE = 'Actualizar';
 export const LBL_ASK = 'Preguntar';
 export const LBL_REPLY = 'Responder';
 export const LBL_SUBMIT = 'Aceptar';
+export const LBL_DOWNLOAD = 'Descargar';
 
 export const LBL_DATE_CREATED = 'Creada en';
 export const LBL_ANSWERS_COUNT = 'Respuestas';

@@ -1,6 +1,6 @@
 {
   "name": "app-movie-collection",
-  "version": "0.3",
+  "version": "0.3.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

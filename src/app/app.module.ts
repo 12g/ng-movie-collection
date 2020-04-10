@@ -15,6 +15,7 @@ import { HeaderViewSwitchComponent } from './header/view-switch/header-view-swit
 import { HeaderTitleComponent } from './header/title/header-title.component';
 import { HeaderActionsComponent } from './header/actions/header-actions.component';
 import { MoviesImportDialogComponent } from './movies/import-dialog/movies-import-dialog.component';
+import { BlobFileDownloadDialogComponent } from './shared/blob-file-download-dialog/blob-file-download-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MoviesImportDialogComponent } from './movies/import-dialog/movies-impor
     HeaderViewSwitchComponent,
     HeaderTitleComponent,
     HeaderActionsComponent,
-    MoviesImportDialogComponent
+    MoviesImportDialogComponent,
+    BlobFileDownloadDialogComponent
   ],
   imports: [
     BrowserModule,

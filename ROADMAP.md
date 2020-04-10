@@ -3,10 +3,10 @@ COMPLETE:
 * Movie list layout
 * Layout switching
 * View, edit, add and remove movies
-
-WORKING:
 * Import & export collection through JSON files
 
-PENDING:
+WORKING:
 * Search / filter movies
+
+PENDING:
 * Material theming

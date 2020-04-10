@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>{{ dialogTitle }}</h2>
+<mat-dialog-content>
+  <a mat-raised-button class="download-link"
+    color="accent"
+    [href]="collectionUrl"
+    download="movie-collection.json">
+    <span>{{ labelDownload }}</span>
+  </a>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <span class="exit-hint">{{ labelExit }}</span>
+</mat-dialog-actions>
+
+
